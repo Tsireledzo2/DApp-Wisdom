@@ -8,6 +8,8 @@ export default function Home() {
   const [tx, setTx] = useState<any>(undefined);
   const [recipient, setRecipient] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
+  const [copySuccess, setCopySuccess] = useState<string>("");
+
 
   useEffect(() => {
     getUserAddress().then(async () => {});
@@ -21,7 +23,6 @@ export default function Home() {
         const tx = await sendCUSD(recipient, amount);
         console.log(recipient);
         console.log(tx);
-        setTx("transaction succeful");
         setTx(tx);
       } catch (error) {
         console.log(error);
@@ -31,13 +32,28 @@ export default function Home() {
     }
   }
 
+  function copyToClipboard() {
+    if (address) {
+      navigator.clipboard.writeText(address).then(
+        () => {
+          setCopySuccess("Address copied!");
+          setTimeout(() => setCopySuccess(""), 2000);
+        },
+        (err) => {
+          console.error("Failed to copy: ", err);
+        }
+      );
+    }
+  }
+
   return (
     <div className="container">
-      <h1>Wisdom cUSD Wallet</h1>
+      <h1>cUSD Wallet</h1>
       {address && (
         <>
           <div className="address">
-            Here is your address: <span>{address}</span>
+            Your Address: <span className="addressNumber">{address}</span>
+            <button className="copy-button" onClick={copyToClipboard}>Copy</button>
           </div>
 
           {tx && (

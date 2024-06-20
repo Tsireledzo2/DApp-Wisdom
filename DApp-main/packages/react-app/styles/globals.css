@@ -12,14 +12,29 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
+    font-family: monospace;
+    font-size: 18px;
+  }
+
+  .copy-button {
+    display: inline-block;
+    padding: 5px 10px;
+    color: #fffefe;
+    background-color: #4b4b4b;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
   }
   
   .container {
     background: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 600px;
+    margin:auto 0;
+    box-shadow: 0 16px 8px rgba(214, 14, 14, 0.1);
+    width: 800px;
     text-align: center;
   }
   
@@ -32,7 +47,10 @@ body {
   
   .address, .transaction {
     margin-bottom: 15px;
-    color: #555;
+  }
+
+  .addressNumber {
+    color: blue;
   }
   
   .input-group {
@@ -61,5 +79,9 @@ body {
   
   .primary-button:hover {
     background-color: #333;
+  }
+
+  .transaction {
+    color: green;
   }
   
